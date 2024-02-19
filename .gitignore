@@ -1,2 +1,9 @@
+# dirs
+__pycache__
+venv
+media
 
-venv/
+# files
+db.sqlite3
+.DS_Store
+local_settings.py
