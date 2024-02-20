@@ -1,5 +1,6 @@
 # dirs
 __pycache__
+*/__pycache__
 venv
 media
 
