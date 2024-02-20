@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', 'food-app-9aa86c7affe0.herokuapp.com'
+    '127.0.0.1', # for local
+    'food-app-9aa86c7affe0.herokuapp.com' # for Heroku
 ]
 
 
