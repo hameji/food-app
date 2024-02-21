@@ -128,6 +128,7 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = 'food:index'
 LOGIN_URL = 'login'
 
 # Default primary key field type
