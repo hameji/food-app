@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ.get('DATABASE_HOST', 'test_host'),
-        'NAME': os.environ.get('DATABASE_NAME', 'test_name'),
-        'USER': os.environ.get('DATABASE_USER', 'test_user'),
-        'PORT': os.environ.get('DATABASE_PORT', 'test_port'),
-        'PASSWORD': os.environ.get('DATABASE_PASS', 'test_pass'),
+        'HOST': os.environ.get('DATABASE_HOST', 'dummy_host'),
+        'NAME': os.environ.get('DATABASE_NAME', 'dummy_name'),
+        'USER': os.environ.get('DATABASE_USER', 'dummy_user'),
+        'PORT': os.environ.get('DATABASE_PORT', 'dummy_port'),
+        'PASSWORD': os.environ.get('DATABASE_PASS', 'dummy_pass'),
     }
 }
 
@@ -139,7 +139,7 @@ except ImportError:
     pass
 
 if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dummy_key')
     import django_heroku
     django_heroku.settings(locals())
 
