@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'rest_framework',
+    'musics.apps.MusicsConfig',
     'movies.apps.MoviesConfig',
     'users.apps.UsersConfig',
     'food.apps.FoodConfig',
