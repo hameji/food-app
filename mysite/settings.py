@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'rest_framework',
     'portfolio.apps.PortfolioConfig',
+    'ecom.apps.EcomConfig',
     'musics.apps.MusicsConfig',
     'movies.apps.MoviesConfig',
     'users.apps.UsersConfig',
