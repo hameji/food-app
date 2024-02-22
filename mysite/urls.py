@@ -22,13 +22,14 @@ from django.contrib.auth import views as authentication_views
 from django.urls import path, include
 from rest_framework import routers
 
-from movies.views import MovieViewSet
+from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from users import views as user_views
 
 # REST api
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register('movies', MovieViewSet)
-
+router.register('action', ActionViewSet)
+router.register('commedy', CommedyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
