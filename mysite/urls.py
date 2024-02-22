@@ -41,7 +41,7 @@ urlpatterns = [ # dynamic path
     path('', include(router.urls)),
     path('musics/', music_views.music_list, name='music_list'),
     path('food/', include('food.urls')),
-    path('ecom/', ecom_views.index, name='shop'),
+    path('ecom/', ecom_views.shop, name='shop'),
     # User
     path('register/', user_views.register, name='register'),
     path('login/', authentication_views.LoginView.as_view(template_name='users/login.html'), name ='login'),
