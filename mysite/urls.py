@@ -31,7 +31,7 @@ router.register('movies', MovieViewSet)
 router.register('action', ActionViewSet)
 router.register('commedy', CommedyViewSet)
 
-urlpatterns = [
+urlpatterns = [ # dynamic path
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('food/', include('food.urls')),
@@ -41,6 +41,4 @@ urlpatterns = [
     path('profile/', user_views.profilepage, name='profile'),
 ]
 
-urlpatterns += [
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
