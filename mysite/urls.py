@@ -20,10 +20,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as authentication_views
 from django.urls import path, include
+from rest_framework import routers
 
+from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from users import views as user_views
 
+# REST api
+router = routers.SimpleRouter()
+router.register('movies', MovieViewSet)
+router.register('action', ActionViewSet)
+router.register('commedy', CommedyViewSet)
+
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('food/', include('food.urls')),
     path('register/', user_views.register, name='register'),
