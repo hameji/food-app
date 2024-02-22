@@ -3,8 +3,9 @@
 {% block body %}
 
 <div class="container">
-    <div class="row">
 
+    <!-- Search Form -->
+    <div class="row">
         <div class="col-md-12">
             <form class="card card-sm" action="" method="get">
                 <div class="card-body row no-gytters align-items-center">
@@ -17,14 +18,17 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- item  -->
+    <div class="row">
         {% for product in product_objects %}
         <div class="col-md-3">
 
             <div class="card">
 
                 <div class="card-body">
-                <img src="{{ product.image }}" class="card-img-top">
+                <img src="{{ product.image }}" height="140" width="140" class="card-img-top">
                 <div class="card-title">
                     {{ product.title }}
                 </div>
@@ -36,10 +40,31 @@
 
         </div>
         {% endfor %}
-
     </div>
+
+    <!-- Pagination -->
+    <div class="row">
+        <div class="col-md-3 offset-md-4">
+            <ul class="pagination">
+                {% if product_objects.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ product_objects.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ product_objects.number }}">{{ product_objects.number }}</a>
+                </li>
+
+                {% if product_objects.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ product_objects.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
 </div>
-
-
 
 {% endblock %}
