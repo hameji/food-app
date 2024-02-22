@@ -22,9 +22,11 @@ from django.contrib.auth import views as authentication_views
 from django.urls import path, include
 from rest_framework import routers
 
+from portfolio import views as portfolio_views
 from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from users import views as user_views
 from musics import views as music_views
+
 
 # REST api
 router = routers.SimpleRouter()
@@ -33,10 +35,13 @@ router.register('action', ActionViewSet)
 router.register('commedy', CommedyViewSet)
 
 urlpatterns = [ # dynamic path
+    path('admin/', admin.site.urls),
+    path('', portfolio_views.index, name='index'),
+    # REST api
     path('', include(router.urls)),
     path('musics/', music_views.music_list, name='music_list'),
-    path('admin/', admin.site.urls),
     path('food/', include('food.urls')),
+    # User
     path('register/', user_views.register, name='register'),
     path('login/', authentication_views.LoginView.as_view(template_name='users/login.html'), name ='login'),
     path('logout/', authentication_views.LogoutView.as_view(template_name='users/logout.html'), name ='logout'),
