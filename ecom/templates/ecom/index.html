@@ -1,3 +1,32 @@
-{% for product in product_objects %}
-    {{ product.title }}
-{% endfor %}
+{% extends 'ecom/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        {% for product in product_objects %}
+        <div class="col-md-3">
+
+            <div class="card">
+
+                <div class="card-body">
+                <img src="{{ product.image }}" class="card-img-top">
+                <div class="card-title">
+                    {{ product.title }}
+                </div>
+                <div class="card-text">
+                    $ {{ product.price }}
+                </div>
+            </div>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+{% endblock %}
