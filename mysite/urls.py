@@ -24,6 +24,7 @@ from rest_framework import routers
 
 from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from users import views as user_views
+from musics import views as music_views
 
 # REST api
 router = routers.SimpleRouter()
@@ -33,6 +34,7 @@ router.register('commedy', CommedyViewSet)
 
 urlpatterns = [ # dynamic path
     path('', include(router.urls)),
+    path('musics/', music_views.music_list, name='music_list'),
     path('admin/', admin.site.urls),
     path('food/', include('food.urls')),
     path('register/', user_views.register, name='register'),
