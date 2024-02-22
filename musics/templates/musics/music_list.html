@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+
+{% block body %}
+
+{% for music_item in music_objects %}
+    {{ music_item.name }}<br>
+{% endfor %}
+
+{% if music_objects.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{ music_objects.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page: {{ music_objects.number }} of {{ music_objects.paginator.num_pages }}
+
+{% if music_objects.has_next %}
+    <a href="?page={{ music_objects.next_page_number }}">Next</a>
+    <a href="?page={{ music_objects.paginator.num_pages }}">Last</a>
+{% endif %}
+
+
+{% endblock %}
