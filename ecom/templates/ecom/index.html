@@ -16,7 +16,7 @@
                         <button class="btn btn-success" type="submit">Search</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
             <div class="card">
                 <img src="{{ product.image }}" height="140" width="140" class="card-img-top">
                 <div class="card-body">
-                    <div class="card-title">
+                    <div id="nm{{ product.id }}" class="card-title">
                         {{ product.title }}
                     </div>
                     <div class="card-text">
@@ -81,19 +81,40 @@
     } else {
         cart = JSON.parse(localStorage.getItem('cart'));
     };
+
     $(document).on('click', '.atc', function(){
-        console.log('The add to cart button is clicked!');
         var item_id = this.id.toString();
         if (cart[item_id] != undefined) {
             cart[item_id] += 1;
         } else {
             cart[item_id] = 1;
         };
-        console.log(cart[item_id]);
+        console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
-
         document.getElementById("cart").innerHTML = "Cart (" + Object.keys(cart).length + ")";
+
+        DisplayCart(cart);
+        function DisplayCart(cart) {
+            var cartString = "<h5>This is your cart</h5><br>";
+            var cartIndex = 1;
+            for (var x in cart) {
+                console.log(x);
+                cartString += cartIndex + ": " + document.getElementById("nm"+x).innerHTML + ", Qty: " + cart[x] + "<br>";
+                cartIndex += 1;
+            };
+            console.log(cartString);
+            if (document.getElementById("cart") == null) {
+                console.log("Element was null!");
+            } else {
+                console.log("Element exists!");
+                var a = document.getElementById("cart").getAttribute('data-bs-content'); //cartString); // Not working
+                console.log(a);
+                document.getElementById("cart").setAttribute('data-bs-content', cartString); //cartString); // Not working
+                $('[data-toggle="popover"]').popover();
+            };
+        };
     });
+
 </script>
 
 {% endblock %}
