@@ -19,3 +19,6 @@ def shop(request):
 def product_detail(request, id):
     product_object = Product.objects.get(id=id)
     return render(request, 'ecom/detail.html', {'product_object': product_object})
+
+def checkout(request):
+    return render(request, 'ecom/checkout.html')
