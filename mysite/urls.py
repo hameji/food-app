@@ -37,11 +37,15 @@ router.register('commedy', CommedyViewSet)
 urlpatterns = [ # dynamic path
     path('admin/', admin.site.urls),
     path('', portfolio_views.index, name='index'),
-    # REST api
+    # REST api(movie)
     path('', include(router.urls)),
+    # Music
     path('musics/', music_views.music_list, name='music_list'),
+    # food
     path('food/', include('food.urls')),
+    # E commer
     path('ecom/', ecom_views.shop, name='shop'),
+    path('ecom/<int:id>', ecom_views.product_detail, name='detail'),
     # User
     path('register/', user_views.register, name='register'),
     path('login/', authentication_views.LoginView.as_view(template_name='users/login.html'), name ='login'),
