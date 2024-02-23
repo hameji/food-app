@@ -1,0 +1,76 @@
+{% extends 'bic/base.html' %}
+
+{% block body %}
+
+<h1>BIC (Boston Internet Community)</h1>
+
+<div class="containter">
+    <!-- Logo -->
+    <div class="row">
+        <div class="col-md-12">
+            <img alt="boston">
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">衣</div>
+                    {% for clothing in clothing_list %}
+                    
+                    'food_list': food_list,
+        
+                    'housing_list': housing_list,
+        
+                    'else_list'
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">食</div>
+                </div>
+                {% for food in food_list %}
+
+                'housing_list': housing_list,
+    
+                'else_list'
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">住</div>
+                </div>
+                {% for housing in housing_list %}
+                'else_list'
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">その他</div>
+                </div>
+                {% for else in else_list %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
