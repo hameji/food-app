@@ -26,16 +26,17 @@
         <div class="col-md-3">
 
             <div class="card">
-
-                <div class="card-body">
                 <img src="{{ product.image }}" height="140" width="140" class="card-img-top">
-                <div class="card-title">
-                    {{ product.title }}
+                <div class="card-body">
+                    <div class="card-title">
+                        {{ product.title }}
+                    </div>
+                    <div class="card-text">
+                        $ {{ product.price }}
+                    </div>
+                    <a class="btn btn-warning" href="/ecom/{{ product.id }}">View</a>
+                    <a class="btn btn-warning">Add to Cart</a>
                 </div>
-                <div class="card-text">
-                    $ {{ product.price }}
-                </div>
-            </div>
             </div>
 
         </div>

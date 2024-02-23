@@ -15,3 +15,7 @@ def shop(request):
     product_objects = paginator.get_page(page)
 
     return render(request, 'ecom/index.html', {'product_objects': product_objects})
+
+def product_detail(request, id):
+    product_object = Product.objects.get(id=id)
+    return render(request, 'ecom/detail.html', {'product_object': product_object})
