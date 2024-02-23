@@ -11,3 +11,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Order(models.Model):
+    items = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    address1 = models.CharField(max_length=200)
+    address2 = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    zip = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.id
