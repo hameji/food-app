@@ -3,27 +3,35 @@
 {% block body %}
 
     <div class="container">
-        <div class="col-md-12">
-            <div class="row">
+        <div class="row">
+            <div class="col-md-12">
 
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                <ul class="list-group" id="item_list">
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
                       Cras justo odio
                       <span class="badge badge-primary badge-pill">14</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Dapibus ac facilisis in
-                      <span class="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Morbi leo risus
-                      <span class="badge badge-primary badge-pill">1</span>
-                    </li>
+                    </li> -->
                 </ul>
-
                 
             </div>
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (item in cart) {
+            let name = cart[item][0];
+            let quantity = cart[item][1];
+
+            itemString = `<li class="list-group-item">${name}-${quantity}</li>`
+            $('#item_list').append(itemString);
+        };
+    };
+</script>
 {% endblock %}
