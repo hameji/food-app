@@ -22,4 +22,4 @@ class Order(models.Model):
     zip = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
