@@ -2,7 +2,6 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 from .models import Product, Order
-# Create your views here.
 
 def shop(request):
     product_objects = Product.objects.all()
