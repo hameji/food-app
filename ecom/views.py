@@ -21,6 +21,7 @@ def product_detail(request, id):
 
 def checkout(request):
     if request.method == "POST":
+        items = request.POST.get('items', "")
         name = request.POST.get('name', "")
         email = request.POST.get('email', "")
         address1 = request.POST.get('address1', "")
@@ -29,7 +30,7 @@ def checkout(request):
         state = request.POST.get('state', "")
         zip = request.POST.get('zip', "")
 
-        order = Order(name=name, email=email, address1=address1, address2=address2, city=city, state=state, zip=zip)
+        order = Order(items=items, name=name, email=email, address1=address1, address2=address2, city=city, state=state, zip=zip)
         order.save()
 
     return render(request, 'ecom/checkout.html')
