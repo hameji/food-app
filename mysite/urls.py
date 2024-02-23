@@ -29,6 +29,7 @@ urlpatterns = [ # dynamic path
     # E commer
     path('ecom/', ecom_views.shop, name='shop'),
     path('ecom/<int:id>', ecom_views.product_detail, name='detail'),
+    path('ecom/checkout', ecom_views.checkout, name='checkout'),
     # User
     path('register/', user_views.register, name='register'),
     path('login/', authentication_views.LoginView.as_view(template_name='users/login.html'), name ='login'),
