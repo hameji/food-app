@@ -91,6 +91,8 @@
         };
         console.log(cart[item_id]);
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        document.getElementById("cart").innerHTML = "Cart (" + Object.keys(cart).length + ")";
     });
 </script>
 
