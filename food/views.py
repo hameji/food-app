@@ -8,7 +8,6 @@ from django.views.generic.edit import CreateView
 from .forms import ItemForm
 from .models import Item
 
-# Create your views here.
 # def index(request):
 #     item_list = Item.objects.all()
 #     context = {
