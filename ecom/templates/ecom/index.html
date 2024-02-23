@@ -102,6 +102,7 @@
                 cartString += cartIndex + ": " + document.getElementById("nm"+x).innerHTML + ", Qty: " + cart[x] + "<br>";
                 cartIndex += 1;
             };
+            cartString += "<a href='/checkout'> <button class='btn btn-warning' id='checkout'>Checkout</button></a>"
             console.log(cartString);
             if (document.getElementById("cart") == null) {
                 console.log("Element was null!");
