@@ -18,3 +18,7 @@ def input(request):
         profile.save()
 
     return render(request, 'pdf/input.html')
+
+def resume(request, id):
+    user_profile = Profile.objects.get(pk=id)
+    return render(request, 'pdf/resume.html', {"user_profile": user_profile})
