@@ -3,7 +3,8 @@
 {% block body %}
 <h2>This is a test for pdf top</h2>
 
-<form>  
+<form method="POST">
+    {% csrf_token %}
     <!-- name -->
     <div class="form-group">
       <label for="name_input">Name</label>
@@ -44,7 +45,7 @@
     <!-- university  -->
     <div class="form-group">
         <label for="university_input">University</label>
-        <input type="email" class="form-control" id="university" name="university" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" class="form-control" id="university" name="university" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
 
     <!-- previous_work -->
