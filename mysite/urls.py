@@ -11,6 +11,7 @@ from users import views as user_views
 from musics import views as music_views
 from ecom import views as ecom_views
 from pdf import views as pdf_views
+from facebook_crawler import views as crawler_view
 
 # REST api
 router = routers.SimpleRouter()
@@ -23,6 +24,8 @@ urlpatterns = [ # dynamic path
     path('', portfolio_views.index, name='index'),
     # REST api(movie)
     path('', include(router.urls)),
+    # facebook_crawler
+    path('crawler/', crawler_view.index, name='crawler_top'),
     # Music
     path('musics/', music_views.music_list, name='music_list'),
     # food
