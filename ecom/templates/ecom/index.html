@@ -1,4 +1,5 @@
 {% extends 'ecom/base.html' %}
+{% load static %}
 
 {% block body %}
 
@@ -29,7 +30,7 @@
                 <img src="{{ product.image }}" height="140" width="140" class="card-img-top">
                 <div class="card-body">
                     <div id="nm{{ product.id }}" class="card-title">{{ product.title }}</div>
-                    <div class="card-text">
+                    <div id="price{{ product.id }}" class="card-text">
                         $ {{ product.price }}
                     </div>
                     <a class="btn btn-warning" href="/ecom/{{ product.id }}">View</a>
@@ -72,51 +73,42 @@
 {% block javascript %}
 
 <script type="text/javascript">
-    console.log('This is working');
-
     if (localStorage.getItem('cart')==null) {
         var cart = {};
     } else {
         cart = JSON.parse(localStorage.getItem('cart'));
     };
 
-    $(document).on('click', '.atc', function(){
+    $(document).on('click', '.atc', function() {
         var item_id = this.id.toString();
-        // cart = {"id": [name, quantity]}
+        // cart = {"id": [name, quantity, total_price]}
+        var price_str = document.getElementById("price"+item_id).innerHTML;
+        var price = price_str.replace(/[^0-9.]/g, '');
         if (cart[item_id] != undefined) {
             cart[item_id][1] += 1;
+            cart[item_id][2] += parseFloat(price);
         } else {
             var title = document.getElementById("nm"+item_id).innerHTML;
             var quantity = 1;
-            cart[item_id] = [title, quantity];
+            cart[item_id] = [title, quantity, parseFloat(price)];
         };
-        console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
         document.getElementById("cart").innerHTML = "Cart (" + Object.keys(cart).length + ")";
-
-        DisplayCart(cart);
-        function DisplayCart(cart) {
-            var cartString = "<h5>This is your cart</h5><br>";
-            var cartIndex = 1;
-            for (var x in cart) {
-                console.log(x);
-                cartString += cartIndex + ": " + cart[x][0] + ", Qty: " + cart[x][1] + "<br>";
-                cartIndex += 1;
-            };
-            cartString += "<a href='/checkout'> <button class='btn btn-warning' id='checkout'>Checkout</button></a>"
-            console.log(cartString);
-            if (document.getElementById("cart") == null) {
-                console.log("Element was null!");
-            } else {
-                console.log("Element exists!");
-                var a = document.getElementById("cart").getAttribute('data-bs-content'); //cartString); // Not working
-                console.log(a);
-                document.getElementById("cart").setAttribute('data-bs-content', cartString); //cartString); // Not working
-                $('[data-toggle="popover"]').popover();
-            };
-        };
     });
 
+    DisplayCart(cart);
+    function DisplayCart(cart) {
+        var cartString = "<h5>This is your cart</h5><br>";
+        var cartIndex = 1;
+        let cartObject = JSON.parse(localStorage.getItem('cart'));
+        for (item in cartObject) {
+            cartString += cartIndex + ": " + cartObject[item][0] + ", Qty: " + cartObject[item][1] + "<br>";
+            cartIndex += 1;
+        };
+        cartString += "<a href='/checkout'> <button class='btn btn-warning' id='checkout'>Checkout</button></a>";
+        document.getElementById("cart").setAttribute('data-bs-content', cartString); // todo: Not working
+        $('[data-bs-toggle="popover"]').popover();
+    };
 </script>
 
 {% endblock %}
