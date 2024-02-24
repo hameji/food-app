@@ -28,9 +28,9 @@ urlpatterns = [ # dynamic path
     # food
     path('food/', include('food.urls')),
     # pdf
-    path('pdf/', pdf_views.input, name='pdf_input'),
+    path('pdf/', pdf_views.list, name='pdf_list'),
+    path('pdf/input', pdf_views.input, name='pdf_input'),
     path('pdf/<int:id>', pdf_views.resume, name='pdf_resume'),
-    path('pdf/list', pdf_views.list, name='pdf_list'),
     # E commer
     path('ecom/', ecom_views.shop, name='shop'),
     path('ecom/<int:id>', ecom_views.product_detail, name='detail'),
