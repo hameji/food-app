@@ -10,6 +10,7 @@ from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from users import views as user_views
 from musics import views as music_views
 from ecom import views as ecom_views
+from pdf import views as pdf_views
 
 # REST api
 router = routers.SimpleRouter()
@@ -26,6 +27,8 @@ urlpatterns = [ # dynamic path
     path('musics/', music_views.music_list, name='music_list'),
     # food
     path('food/', include('food.urls')),
+    # pdf
+    path('pdf/', pdf_views.input, name='pdf_input'),
     # E commer
     path('ecom/', ecom_views.shop, name='shop'),
     path('ecom/<int:id>', ecom_views.product_detail, name='detail'),
