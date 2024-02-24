@@ -2,6 +2,10 @@
 
 {% block body %}
 
-This is a test.
+<h2>This is a test.</h2>
+
+{% for link in link_list %}
+    {{ link }}<br/>
+{% endfor %}
 
 {% endblock %}
