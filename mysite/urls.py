@@ -26,6 +26,7 @@ urlpatterns = [ # dynamic path
     path('', include(router.urls)),
     # facebook_crawler
     path('crawler/', crawler_view.index, name='crawler_top'),
+    path('crawler/delete', crawler_view.clear, name='crawler_delete'),
     # Music
     path('musics/', music_views.music_list, name='music_list'),
     # food
