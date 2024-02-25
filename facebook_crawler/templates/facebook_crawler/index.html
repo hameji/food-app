@@ -2,10 +2,51 @@
 
 {% block body %}
 
-<h2>This is a test.</h2>
 
-{% for link in link_list %}
-    {{ link }}<br/>
-{% endfor %}
+<div class="container">
+    <div class="row m-5">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="col-md-4">
+                <input class="form-control" type="text" id="site" name="site" placeholder="enter site address">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" type="submit">Scrape</button>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-warning" href="#">Delete</a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                  </tr>
+                </thead>
+                <tbody>
+            
+                    {% for link in link_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter0 }}</th>
+                            <td>{{ link.name }}</td>
+                            <td>{{ link.address }}</td>
+                        </tr>
+                    {% endfor %}
+            
+                </tbody>
+              </table>            
+            
+        </div>
+    </div>
+</div>
 
+{% endblock %}
+
+{% block javascript %}
 {% endblock %}
