@@ -24,3 +24,8 @@ def index(request):
     data = Link.objects.all()
     return render(request, 'facebook_crawler/index.html', {'link_list': data})
     return HttpResponseRedirect('') # redirect is wrong
+
+
+def clear(request):
+    Link.objects.all().delete()
+    return render(request, 'facebook_crawler/index.html')
