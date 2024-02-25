@@ -1,21 +1,20 @@
+import os, sys, subprocess, platform
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-
 import pdfkit
 
 from .models import Profile
 
 
-import os, sys, subprocess, platform
-
-if platform.system() == "Windows":
-        pdfkit_config = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
-else:
-        os.environ['PATH'] += os.pathsep + os.path.dirname(sys.executable)
-        WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')], 
-            stdout=subprocess.PIPE).communicate()[0].strip()
-        pdfkit_config = pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
+# if platform.system() == "Windows":
+#         pdfkit_config = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
+# else:
+#         os.environ['PATH'] += os.pathsep + os.path.dirname(sys.executable)
+#         WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')], 
+#             stdout=subprocess.PIPE).communicate()[0].strip()
+#         pdfkit_config = pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
 
 
 def input(request):
@@ -43,7 +42,7 @@ def resume(request, id):
         'page-size': 'Letter',
         'encoding': 'UTF-8',
     }
-    pdf = pdfkit.from_string(html, False, options=options, configuration=pdfkit_config)
+    pdf = pdfkit.from_string(html, False, options=options) # , configuration=pdfkit_config)
     response = HttpResponse(pdf, content_type='application/pdf')
     filename = f'resume_{user_profile.name}.pdf'
     response['Content-Disposition'] = f'attachment; filename={filename}'
