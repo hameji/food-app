@@ -12,6 +12,7 @@ from musics import views as music_views
 from ecom import views as ecom_views
 from pdf import views as pdf_views
 from facebook_crawler import views as crawler_view
+from calorieTracker import views as tracker_view
 
 # REST api
 router = routers.SimpleRouter()
@@ -27,6 +28,8 @@ urlpatterns = [ # dynamic path
     # facebook_crawler
     path('crawler/', crawler_view.index, name='crawler_top'),
     path('crawler/delete', crawler_view.clear, name='crawler_delete'),
+    # calorie_tracker
+    path('calorieTracker/', tracker_view.index, name='tracker'),
     # Music
     path('musics/', music_views.music_list, name='music_list'),
     # food
