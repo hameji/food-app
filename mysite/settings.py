@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'rest_framework',
+    'calorieTracker.apps.CalorietrackerConfig',
     'facebook_crawler.apps.FacebookCrawlerConfig',
     'pdf.apps.PdfConfig',
     'portfolio.apps.PortfolioConfig',
