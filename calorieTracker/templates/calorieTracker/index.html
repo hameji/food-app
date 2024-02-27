@@ -2,6 +2,15 @@
 
 {% block body %}
 <h2>Calorie Tracker</h2>
+
+{% for food in foods %}
+<ul>
+    <li>
+        {{ food.name }}
+    </li>
+</ul>    
+
+{% endfor %}
 {% endblock %}
 
 {% block javascript %}
