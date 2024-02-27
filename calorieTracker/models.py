@@ -13,5 +13,9 @@ class Food(models.Model):
     calories = models.IntegerField()    
 
 class Consume(models.Model):
+
+    def __str__(self):
+        return self.user.last_name  + ' ' +  self.user.first_name + '-' + self.food_consumed.name
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     food_consumed =  models.ForeignKey(Food, on_delete=models.CASCADE)
