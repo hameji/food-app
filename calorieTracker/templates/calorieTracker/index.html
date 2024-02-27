@@ -3,14 +3,15 @@
 {% block body %}
 <h2>Calorie Tracker</h2>
 
-{% for food in foods %}
-<ul>
-    <li>
-        {{ food.name }}
-    </li>
-</ul>    
+<form action="">
+{% csrf_token %}
+<select name="" id="">
+    {% for food in foods %}
+        <option value="{{ food.name }}">{{ food.name }}</option>
+    {% endfor %}
+</select>
+</form>
 
-{% endfor %}
 {% endblock %}
 
 {% block javascript %}
