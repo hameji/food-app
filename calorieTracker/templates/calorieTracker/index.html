@@ -80,11 +80,18 @@
         </div>
 
         <div class="col-md-5">
+            <div class="">
+                <h4>Today's breakdown</h4>
+            </div>
+            <div class="card-header text-white bg-primary">
+                <h4>Macronutrients breakdown</h4>
+            </div>
+            <div class="col-md-12">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
         </div>
     </div>
 </div>
-
-
 
 
 {% endblock %}
@@ -113,6 +120,29 @@
     var carPer = (calories/2000) *100;
     document.getElementsByClassName("progress-bar")[0].setAttribute('style', 'width:' + carPer + '%');
 
+    // Chart.js code
+    var total = carbs + proteins + fats;
+    var carbsP = Math.round(carbs / total * 100);
+    var proteinsP = Math.round(proteins / total * 100);
+    var fatsP = Math.round(fats / total * 100);
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Carbs:'+ carbsP + '%', 'Proteins:' + proteinsP + '%', 'Fats:' + fatsP +'%'],
+            datasets: [{
+                label: 'Portion of total Calories',
+                data: [carbsP, proteinsP, fatsP],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                ],
+                borderWidth: 1
+            }],
+        },
+    });
 
 </script>
 {% endblock %}
