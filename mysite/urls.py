@@ -30,6 +30,7 @@ urlpatterns = [ # dynamic path
     path('crawler/delete', crawler_view.clear, name='crawler_delete'),
     # calorie_tracker
     path('calorieTracker/', tracker_view.index, name='tracker'),
+    path('calorieTracker/<int:id>/', tracker_view.delete_consume, name='tracker_delete'),
     # Music
     path('musics/', music_views.music_list, name='music_list'),
     # food
