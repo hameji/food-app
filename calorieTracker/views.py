@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Food, Consume
 
@@ -16,3 +16,11 @@ def index(request):
         print("a")
 
     return render(request, 'calorieTracker/index.html', {'foods': food, 'consumed_foods': consumed_foods})
+
+def delete_consume(request, id):
+    consumed_food = Consume.objects.get(id=id)
+    if request.method == 'POST':
+        consumed_food.delete()
+        return redirect('/calorieTracker/')
+    else:
+        return render(request, 'calorieTracker/delete.html')
