@@ -8,7 +8,6 @@ from rest_framework import routers
 from portfolio import views as portfolio_views
 from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
 from social import views as social_views
-from users import views as user_views
 from musics import views as music_views
 from ecom import views as ecom_views
 from pdf import views as pdf_views
@@ -47,10 +46,7 @@ urlpatterns = [ # dynamic path
     path('ecom/<int:id>', ecom_views.product_detail, name='detail'),
     path('ecom/checkout', ecom_views.checkout, name='checkout'),
     # User
-    path('register/', user_views.register, name='register'),
-    path('login/', authentication_views.LoginView.as_view(template_name='users/login.html'), name ='login'),
-    path('logout/', authentication_views.LogoutView.as_view(template_name='users/logout.html'), name ='logout'),
-    path('profile/', user_views.profilepage, name='profile'),
+    path('users/', include('users.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -26,8 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', # for local
-    'food-app-9aa86c7affe0.herokuapp.com' # for Heroku
+    # local
+    '127.0.0.1',
+    # Heroku
+    'food-app-9aa86c7affe0.herokuapp.com'
 ]
 
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'movies.apps.MoviesConfig',
     'users.apps.UsersConfig',
     'food.apps.FoodConfig',
+    # default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,6 +142,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'food:index'
 LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
 MEDIA_URL = '/pictures/'
