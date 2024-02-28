@@ -7,6 +7,7 @@ from rest_framework import routers
 
 from portfolio import views as portfolio_views
 from movies.views import MovieViewSet, ActionViewSet, CommedyViewSet
+from social import views as social_views
 from users import views as user_views
 from musics import views as music_views
 from ecom import views as ecom_views
@@ -25,6 +26,8 @@ urlpatterns = [ # dynamic path
     path('', portfolio_views.index, name='index'),
     # REST api(movie)
     path('', include(router.urls)),
+    # social
+    path('social/', social_views.index, name='social_top'),
     # facebook_crawler
     path('crawler/', crawler_view.index, name='crawler_top'),
     path('crawler/delete', crawler_view.clear, name='crawler_delete'),
