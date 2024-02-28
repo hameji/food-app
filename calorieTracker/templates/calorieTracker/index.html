@@ -1,10 +1,30 @@
 {% extends 'calorieTracker/base.html' %}
 
 {% block body %}
-<h2>Calorie Tracker</h2>
-
-
 <div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-dark bg-primary">
+                <span class="navbar-brand">Calorie Tracker</span>
+            </nav>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <h4>Calorie Goal</h4>
+    <br>
+    <div class="row">
+        <div class="col-md-9 offset-1">
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+
     <div class="row">
         <div class="col-md-12">
             <form method="POST">
@@ -24,6 +44,7 @@
         </div>
     </div>
 
+    <br><br>
     <div class="row">
         <div class="col-md-6">
             <div>
@@ -70,6 +91,7 @@
 
 {% block javascript %}
 <script type="text/javascript">
+    // Summary of table
     var table = document.getElementById("table");
     var carbs = 0, proteins = 0, fats = 0, calories = 0;
     for (var i = 1; i < table.rows.length -1; i++) {
@@ -86,6 +108,11 @@
     document.getElementById("totalProteins").innerHTML = proteins;
     document.getElementById("totalFats").innerHTML = fats;
     document.getElementById("totalCalories").innerHTML = calories;
+
+    // Progress bar
+    var carPer = (calories/2000) *100;
+    document.getElementsByClassName("progress-bar")[0].setAttribute('style', 'width:' + carPer + '%');
+
 
 </script>
 {% endblock %}
