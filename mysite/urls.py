@@ -21,6 +21,12 @@ router.register('commedy', CommedyViewSet)
 
 urlpatterns = [ # dynamic path
     path('admin/', admin.site.urls),
+
+    ## Original Apps
+    # giants_sholder
+    path('giants_sholder/', include('giants_sholder.urls')),
+
+
     # portfolio
     path('', portfolio_views.index, name='index'),
     # REST api(movie)
