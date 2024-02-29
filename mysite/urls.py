@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.auth import views as authentication_views
 from django.urls import path, include
 from rest_framework import routers
 
@@ -22,6 +21,7 @@ router.register('commedy', CommedyViewSet)
 
 urlpatterns = [ # dynamic path
     path('admin/', admin.site.urls),
+    # portfolio
     path('', portfolio_views.index, name='index'),
     # REST api(movie)
     path('', include(router.urls)),
