@@ -4,10 +4,13 @@
 
 <ul>
     <li><a href="{% url 'user:register' %}"">register</a></li>
-    <li><a href="{% url 'user:login' %}">login</a></li>
-    <li><a href="{% url 'user:logout' %}">logout</a></li>
-    <li><a href="{% url 'user:change_password' %}">change_password</a></li>
-    <li><a href=""></a></li>
+    {% if request.user.is_authenticated %}
+        <li><a href="{% url 'user:logout' %}">logout</a></li>
+    {% else %}
+        <li><a href="{% url 'user:login' %}">login</a></li>
+    {% endif %}    
+    <li><a href="{% url 'user:password_change' %}">change_password</a></li>
+    <li><a href="{% url 'user:password_reset' %}">reset_password</a></li>
 </ul>
 
 {% endblock %}
