@@ -53,6 +53,8 @@ urlpatterns = [ # dynamic path
     path('ecom/checkout', ecom_views.checkout, name='checkout'),
     # User
     path('users/', include('users.urls')),
+    # User
+    path('posts/', include('posts.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

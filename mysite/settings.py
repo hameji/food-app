@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'posts',
     'rest_framework',
     'social.apps.SocialConfig',
     'calorieTracker.apps.CalorietrackerConfig',
