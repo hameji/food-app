@@ -13,13 +13,10 @@
         <form method="POST" action="">
             {% csrf_token %}
             <div class="col-md-4">
-                <input class="form-control" type="text" id="site" name="site" placeholder="enter site address">
+                <input class="form-control" type="text" id="site" name="site" placeholder="keywords">
             </div>
             <div class="col-md-2">
-                <button class="btn btn-primary" type="submit">Scrape</button>
-            </div>
-            <div class="col-md-6">
-                <a class="btn btn-warning" href="delete">Delete</a>
+                <button class="btn btn-primary" type="submit">Register</button>
             </div>
         </form>
     </div>
@@ -30,17 +27,23 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Link ref</th>
+                    <th scope="col">Journal</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Abstract</th>
                   </tr>
                 </thead>
                 <tbody>
             
-                    {% for link in link_list %}
+                    {% for datum in data %}
                         <tr>
-                            <th scope="row">{{ forloop.counter0 }}</th>
-                            <td>{{ link.name }}</td>
-                            <td>{{ link.address }}</td>
+                            <td scope="row">{{ forloop.counter0 }}</th>
+                            {% if datum|length > 3 %}
+                                <td>{{ datum.4 }}</td>
+                            {% else %}
+                                <td>-</td>                           
+                            {% endif %}
+                            <td>{{ datum.0 }}</td>
+                            <td>{{ datum.1 }}</td>
                         </tr>
                     {% endfor %}
             
