@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .forms import PostCreateForm
+from .models import Post
 
 @login_required
 def post_create(request):
@@ -15,3 +16,8 @@ def post_create(request):
         form = PostCreateForm(data=request.GET)
     return render(request, 'posts/create.html', {'form': form})
 
+@login_required
+def index(request):
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user)
+    return render(request, 'posts/index.html', {'posts': posts})
