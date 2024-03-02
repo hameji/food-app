@@ -5,6 +5,7 @@ from . import views as posts_views
 
 app_name = 'posts'
 urlpatterns = [
+    path('', posts_views.index, name='index'),
     path('create/', posts_views.post_create, name='create'),
 ]
 

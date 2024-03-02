@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+
+{% block body %}
+
+<h2>Homepage for Posts</h2> 
+{% for post in posts %}
+    <h3>{{ post.title }}</h3>
+    <h4>{{ post.user }}</h4>
+    <img src="{{ post.image.url }}">
+{% endfor %}
+
+{% endblock %}
