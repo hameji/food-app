@@ -1,12 +1,69 @@
 {% extends 'users/base.html' %}
 
+{% load static %}
+
 {% block body %}
 
-<h2>Homepage for Posts</h2> 
-{% for post in posts %}
-    <h3>{{ post.title }}</h3>
-    <h4>{{ post.user }}</h4>
-    <img src="{{ post.image.url }}">
-{% endfor %}
+
+<nav class="shadow-lg">
+    <div class="px-4 mx-auto">
+
+        <div class="flex justify-between">
+            <!-- Website logo -->
+            <div>
+                <a class="flex" href="">
+                    <img class="h-8 w-8 mr-2" src="{% static 'users/images/social.png' %}" alt="">
+                    <span class="font-semibold text-lg text-gray-500">Photo App</span>
+                </a>
+            </div>
+            <!-- Website items -->
+            <div class="space-x-1">
+                {% if request.user.is_authenticated %}
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'user:logout' %}">Logout</a>
+                {% else %}
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'user:login' %}">Login</a>
+                {% endif %}
+                <a class="py-4 px-2 text-gray-500 font-semibold" ="">Link3</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<div class="flex mt-5 p-10 justify-center">
+    <h2 class="text-3xl font-normal mb-2 text-gray-500">My Posts</h2><br>
+
+    <div class="grid mx-60 pd-10 grid-cols-1">
+        <!-- Card stats here -->
+        {% for post in posts %}
+            <a href="">
+
+                <div class="rounded overflow-hidden w-[470px] h-[470px] bg-white shadow-lg">
+                    <div class="user-container flex mx-5 my-5">
+                        <img class="h-10 x-10 rounded-full" src="{{ profile.image.url }}" alt="">
+                        <div class="mx-2 my-2 font-bold "><span class="text-indigo-500">{{ post.user }}</span></div>
+                    </div>
+                    <img src="{{ post.image.url }}" alt="">
+                </div>
+                <div class="px-6 py-4">
+                    <div class="icon-container flex gap-3">
+                        <img class="w-5 h-5" src="{% static 'users/images/like.png' %}">
+                        <img class="w-5 h-5" src="{% static 'users/images/comment.png' %}">
+                        <img class="w-5 h-5" src="{% static 'users/images/share.png' %}">
+                    </div>
+                </div>
+
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{{ post.title }}</div>
+                    <p class="text-gray-700 text-base">{{ post.caption }}</p>
+                </div>
+            </a>
+        <!-- Card ends here -->
+        {% endfor %}
+    
+    </div>
+
+</div>
+
 
 {% endblock %}

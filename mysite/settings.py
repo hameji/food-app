@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
 MEDIA_URL = '/pictures/'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'food:index'
+LOGIN_REDIRECT_URL = 'user:index'
 
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'user:login'

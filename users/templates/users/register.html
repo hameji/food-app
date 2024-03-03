@@ -1,34 +1,55 @@
 {% extends 'users/base.html' %}
+{% load static %}
 
 {% block body %}
 
-<div class="container">
+<div class="containter py-5">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="card">
-                <div class="card-header text-white bg-info">
-                    Register
-                </div>
-                <div class="card-body">
 
-                    <form method="POST">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title text-2xl m-10">
+                        🥸 Register Login
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" class="bg-white shadow-md m-10 w-2/5 rounded px-8 pt-6 pb-8 mb-4">
                         {% csrf_token %}
 
-                        {{ user_form.as_p }}
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Email</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ user_form.username }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Username</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ user_form.username }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">First name</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ user_form.first_name }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Password</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ user_form.password }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Confirm Password</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ user_form.password2 }}</div>
+                            </div>
+                        <button class="text-white bg-green-500 px-5 py-2" type="submit">Login</button>
+                    </form>
 
-                        {% for field in form %}
-                        <div class="form-group">
-                            {{ field.name }}<br>
-                            {{ field }}
-                        </div>
-                        {% endfor %}
-                        <button class="btn-info" type="submit">Register</button>
-                    </form>                    
-
+                    <p class="px-10 py-10 ">
+                        <a class="text-indigo-500" href="{% url 'user:password_reset' %}">Forgot password?</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
+
 
 {% endblock %}
