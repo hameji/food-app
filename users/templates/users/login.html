@@ -1,33 +1,36 @@
 {% extends 'users/base.html' %}
+{% load static %}
 
 {% block body %}
 
-<div class="containter">
+<div class="containter py-5">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="card">
 
                 <div class="card-header text-white bg-info">
-                    <div class="card-title">
-                        Login
+                    <div class="card-title text-2xl m-10">
+                        🥸 User Login
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" class="bg-white shadow-md m-10 w-2/5 rounded px-8 pt-6 pb-8 mb-4">
                         {% csrf_token %}
 
-                        {% for field in form %}
-                            <div class="form-group">
-                                {{ field.name }}
-                                {{ field }}
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Username</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ form.username }}</div>
                             </div>
-                        {% endfor %}
-                        <button class="btn-info" type="submit">Login</button>
+                            <div class="mb-2">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Password</label>
+                                <div class="shadow text-gray-700 apperance-none border rounded py-2 px-3 mr-10">{{ form.password }}</div>
+                            </div>
+                        <button class="text-white bg-green-500 px-5 py-2" type="submit">Login</button>
                     </form>
 
-                    <p>
-                        <a href="{% url 'user:password_reset' %}">Forgot password?</a>
+                    <p class="px-10 py-10 ">
+                        <a class="text-indigo-500" href="{% url 'user:password_reset' %}">Forgot password?</a>
                     </p>
                 </div>
             </div>
