@@ -23,3 +23,7 @@ def index(request):
     profile = Profile.objects.filter(user=current_user)
     posts = Post.objects.filter(user=current_user)
     return render(request, 'posts/index.html', {'posts': posts, 'profile': profile})
+
+def feed(request):
+    posts = Post.objects.all()
+    return render(request, 'posts/feed.html', {'posts': posts})
